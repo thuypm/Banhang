@@ -1,0 +1,66 @@
+<link href="/stylesheets/chat2.css" rel="stylesheet">
+
+<div class="container" >
+    <%if(!user){%>
+        <div class="row">
+                <div class="panel panel-chat">
+                <div class="panel-heading">
+                       <a href="/signin" class="chatMinimize"><span>Đăng nhập để chát</span></a>
+                    <!-- <a href="#" class="chatClose" onclick="return false"><i class="glyphicon glyphicon-remove"></i></a> -->
+                    <div class="clearFix"></div>
+                </div>
+          </div>
+
+    <%}else{
+        if(user.admin == 0){%>
+	<div class="row">
+    	<div class="panel panel-chat">
+        <div class="panel-heading">
+            <a href="#" class="chatMinimize" onclick="return false"><span>Chat với admin</span></a>
+            <!-- <a href="#" class="chatClose" onclick="return false"><i class="glyphicon glyphicon-remove"></i></a> -->
+            <div class="clearFix"></div>
+        </div>
+        <div class="panel-body">
+            <% if(message[0]){
+                message.forEach(function(i){
+                    if(i.fr == user.username){
+                        %>
+                        <div class="messageHer">
+                                <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="" class="img-circle"/>
+                                <span><%= i.body%>
+                                </span>
+                                <div class="clearFix"></div>
+                            </div>
+                    <%}else{%>
+                        <div class="messageMe">
+                                <img src="http://placehold.it/50/55C1E7/fff&text=AD" alt="User Avatar" class="img-circle" />
+                                <span><%= i.body%>
+                                </span>
+                                <div class="clearFix"></div> 
+                            </div>
+
+                   <%}
+                })
+            }%>
+            <!-- <div class="messageMe">
+                <img src="http://placehold.it/50/55C1E7/fff&text=AD" alt="User Avatar" class="img-circle" />
+                <span>àbsxbáonpsssssssssssssss
+                </span>
+                <div class="clearFix"></div>
+            </div>
+            <div class="messageHer">
+                <img src="http://placehold.it/50/FA6F57/fff&text=ME" alt="" class="img-circle"/>
+                <span>asb
+                </span>
+                <div class="clearFix"></div>
+            </div> -->
+          
+            <div class="clearFix"></div>
+        </div>
+        <div class="panel-footer">
+            <textarea name="textMessage" cols="0" rows="1" placeholder="nhập tin nhắn" id="btn-input"></textarea>
+        </div>
+    </div>
+    </div>
+    <%}}%>
+</div>
